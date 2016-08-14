@@ -1,3 +1,9 @@
+REPLACE ALL:
+    CUSTOM_ADAPTER
+    MODEL
+
+
+
 MANIFEST:
 
 dependencies {
@@ -20,41 +26,42 @@ MODEL:
 
 RECYCLER_VIEW LAYOUT:
 
-<android.support.v7.widget.RecyclerView
+    <android.support.v7.widget.RecyclerView
       android:id="@+id/rvContacts"
       android:layout_width="match_parent"
       android:layout_height="match_parent" />
 
 
-RecyclerView Item Layout:
+RECYCLER_VIEW ITEM LAYOUT:
 
 // this varies
+// build a layout to be inflated by the RecyclerView
 
 
 
 
 ADAPTER:
 
-//public class CUSTOM_ADAPTER extends 
-    //RecyclerView.Adapter<CUSTOM_ADAPTER.ViewHolder> {
+public class CUSTOM_ADAPTER extends 
+    RecyclerView.Adapter<CUSTOM_ADAPTER.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        //public TextView VIEW;
-        //public Button VIEW;
+        public TextView VIEW;
+        public Button VIEW;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            //VIEW = (TextView) itemView.findViewById(R.id.contact_name);
-            //VIEW = (Button) itemView.findViewById(R.id.message_button);
+            VIEW = (TextView) itemView.findViewById(R.id.contact_name);
+            VIEW = (Button) itemView.findViewById(R.id.message_button);
         }
     }
 
-    //private List<MODEL> mModel;
+    private List<MODEL> mModel;
     private Context mContext;
 
-    //public CUSTOM_ADAPTER(Context context, List<MODEL> model) {
-        //mModel = model;
+    public CUSTOM_ADAPTER(Context context, List<MODEL> model) {
+        mModel = model;
         mContext = context;
     }
 
@@ -63,30 +70,30 @@ ADAPTER:
     }
 
     @Override
-    //public CUSTOM_ADAPTER.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CUSTOM_ADAPTER.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        //View INFLATED_VIEW = inflater.inflate(R.layout.RECYCLER_ITEM, parent, false);
+        View view = inflater.inflate(R.layout.RECYCLER_ITEM, parent, false);
 
-        //ViewHolder viewHolder = new ViewHolder(INFLATED_VIEW);
+        ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    //public void onBindViewHolder(CUSTOM_ADAPTER.ViewHolder viewHolder, int position) {
-        //MODEL model = mModel.get(position);
+    public void onBindViewHolder(CUSTOM_ADAPTER.ViewHolder viewHolder, int position) {
+        MODEL model = mModel.get(position);
 
-        //VIEW textView = viewHolder.nameTextView;
-        //textView.setText(model.getName());
-        //VIEW button = viewHolder.messageButton;
-        //button.setText("Message");
+        TextView textView = viewHolder.nameTextView;
+        textView.setText(model.getName());
+        Button button = viewHolder.messageButton;
+        button.setText("Message");
     }
 
     // Returns the total count of items in the list
     @Override
     public int getItemCount() {
-        //return mModel.size();
+        return mModel.size();
     }
 }
 
