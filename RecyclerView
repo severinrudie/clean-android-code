@@ -1,8 +1,3 @@
-REPLACE ALL:
-    CUSTOM_ADAPTER
-    MODEL
-
-
 
 MANIFEST:
 
@@ -40,7 +35,7 @@ RECYCLER_VIEW ITEM LAYOUT:
 
 
 
-ADAPTER:
+ADAPTER:  REPLACE: CUSTOM_ADAPTER, MODEL
 
 public class CUSTOM_ADAPTER extends 
     RecyclerView.Adapter<CUSTOM_ADAPTER.ViewHolder> {
